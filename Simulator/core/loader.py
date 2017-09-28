@@ -2,6 +2,7 @@ import os
 import bge
 
 import logzero
+from . import datatypes
 
 log = logzero.logger
 
@@ -48,7 +49,7 @@ def lib_load_unique(path):
         bge.logic.LibLoad(libname, 'Scene', raw_data, load_actions=True)
 
         # Retrieve all objects not noticed in the previous search.
-        added = list()
+        added = datatypes.NamedObjectList()
         for obj in scene.objects + scene.objectsInactive:
             if LIBLOAD_PROPERTY not in obj:
                 added.append(obj)
