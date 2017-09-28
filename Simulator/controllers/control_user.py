@@ -23,7 +23,6 @@ class User(control.Controller):
         if keyboard.events[bge.events.DKEY] == ACTIVE:
             right_wheel -= WHEEL_SPEED
             
-        print(self._inputs, self._outputs)
         self._outputs['left_wheel'].write(left_wheel)
         self._outputs['right_wheel'].write(right_wheel)
         
