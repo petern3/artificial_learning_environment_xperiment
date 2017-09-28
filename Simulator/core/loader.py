@@ -10,10 +10,10 @@ LIBLOAD_PROPERTY = 'LIBLOAD_LOADER_KNOWN'
 
 
 def lib_load_unique(path):
-    '''Sometimes you want to have completely seperat objects (eg materials).
+    '''Sometimes you want to have completely seperate objects (eg materials).
     Currently this isn't possible using libnew, so we have to load the whole
     blend file by passing in the blend as a data string (otherwise BGE
-    complains about loading it multiple times). Note that this will loase any
+    complains about loading it multiple times). Note that this will lose any
     relative paths - so you can't use things like external textures in blends
     loaded with this method.
 
