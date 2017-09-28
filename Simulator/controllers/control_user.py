@@ -1,5 +1,4 @@
-
-import control
+from core import control
 
 import bge
 keyboard = bge.logic.keyboard
@@ -10,7 +9,7 @@ WHEEL_SPEED = 1023
 
 
 class User(control.Controller):
-    def run(self):
+    def update(self):
         left_wheel = 0
         right_wheel = 0
         
@@ -24,12 +23,12 @@ class User(control.Controller):
         if keyboard.events[bge.events.DKEY] == ACTIVE:
             right_wheel -= WHEEL_SPEED
             
-        
-        self.chassis.left_wheel_actuator.write(left_wheel)
-        self.chassis.right_wheel_actuator.write(right_wheel)
+        print(self._inputs, self._outputs)
+        self._outputs['left_wheel'].write(left_wheel)
+        self._outputs['right_wheel'].write(right_wheel)
         
         if keyboard.events[bge.events.XKEY] == JUST_ACTIVATED:
-            print(self.chassis.left_wheel_sensor.read())
+            print(self._inputs['left_wheel'].read())
         if keyboard.events[bge.events.CKEY] == JUST_ACTIVATED:
-            print(self.chassis.right_wheel_sensor.read())
+            print(self._inputs['right_wheel'].read())
 

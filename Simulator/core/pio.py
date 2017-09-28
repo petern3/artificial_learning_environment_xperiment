@@ -1,39 +1,32 @@
-
-
 class Input():
-    def __init__(self, pin, is_digital=False):
+    def __init__(self, name, pin):
         """ self.pin also takes function handles. """
         self.pin = pin
-        self.is_digital = is_digital
+        self.name = name
         
     def read(self):
         if callable(self.pin):
             value = self.pin()
         else:
             value = self.pin
-            
-        if self.is_digital:
-            assert(isinstance(value, bool))
         return value
         
     def __repr__(self):
-        return "Input({0}, {1})".format(self.pin, self.is_digital)
-    
+        return "Input({0}, {1})".format(self.name, self.pin)
+
+
 class Output():
-    def __init__(self, pin, is_digital=False):
+    def __init__(self, name, pin):
         """ self.pin also takes function handles. """
         self.pin = pin
-        self.is_digital = is_digital
+        self.name = name
         
     def write(self, value):
-        if self.is_digital:
-            assert(isinstance(value, bool))
-        
         if callable(self.pin):
             self.pin(value)
         else:
             self.pin = value
         
     def __repr__(self):
-        return "Output({0}, {1})".format(self.pin, self.is_digital)
+        return "Output({0}, {1})".format(self.name, self.pin)
 
