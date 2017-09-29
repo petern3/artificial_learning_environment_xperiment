@@ -22,7 +22,7 @@ class Chassis:
         return self._controller
 
     @controller.setter
-    def controller(self, val:control.Controller ):
+    def controller(self, val:control.Controller):
         self._controller = val
         self._controller.register_inputs(self.inputs)
         self._controller.register_outputs(self.outputs)
